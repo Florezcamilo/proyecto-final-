@@ -1,0 +1,5 @@
+camilo@algo.com,123,0,admin
+juangalle12@algo.com,12345,1,user
+main@gmail.com,12345,0,user
+juangalle12@algo.com,12345,2,user
+juangalle12@algo.com,12345,5,user

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Proyecto</title>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+	    <div class=page>
+        <table>
+            <tr>
+                <td><img src="../static/pokesmart.png" width="250"></td>
+                <td width="20">&nbsp;</td>
+                <td><h4> Bienvenido al grado {{ grade }}.<br></h4></td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <br>
+        <form action = "" method="post">
+        {% block body %}
+            Inciar el curso?:<br>
+            <br>
+            <br>
+            <input name='boton3' type="submit" value="iniciar curso"> 
+            <br>
+            <br>
+            <br>
+            Regresar a la pantalla de inicio?<br>
+            <br>
+            <br>
+            <input name='boton3' type="submit" value="regresar"> 
+            <br>
+            <br>
+            <br> 
+        {% endblock %}
+       </form>
+</body>
+</html>

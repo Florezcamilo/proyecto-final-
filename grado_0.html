@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Proyecto</title>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+	<h2 id="preg"></h2>
+	<input type="text" id="dato">
+	<button id="boton">Siguiente Pregunta</button>
+	<body OnLoad="NoBack();">
+
+
+	<script>
+	    window.onbeforeunload = function() {
+	        alert("Dude, are you sure you want to leave? Think of the kittens!");
+	    }			
+		var preguntas = [																
+
+				['¿Cuánto es 1+2?', '3'],			
+				['¿Qué color resulta al mezclar el azul con el amarillo?', 'verde'],		
+				['¿Cuántos jugadores participan en un partido de fútbol?', '22'],
+				['¿Con qué popular periférico introducimos texto en un computador?', 'teclado'],
+				['20-15 es igual a...', '5'],
+				['¿Cómo se llama nuestro planeta?', 'tierra'],           
+				['¿De qué color es el caballo blanco de Santiago?', 'blanco']			
+			],
+			pregunta, respuesta,
+			formuladas = 0,
+			acertadas = 0;
+		hazPregunta();
+		document.getElementById('boton').addEventListener('click', function(){
+			var entrada = document.getElementById("dato").value;
+			if(entrada == respuesta){
+				acertadas++;
+				alert("Muy bien!");
+			}
+			if(entrada != respuesta){
+				alert("Incorrecta");
+			}
+			if(formuladas < 5){			// Si aun no se han hecho 5 preguntas...
+				hazPregunta();			// ... seguir preguntando
+			}
+			else{						// de lo contrario...
+				muestraResultado();		// ... finaliza juego mostrando el resultado
+			}
+		});
+		/*
+			Formula una pregunta al usuario...
+		*/
+		function hazPregunta(){
+			var e;			// simple variable auxiliar
+			// se extrae una pregunta/respuesta al azar del array...
+			e = preguntas.splice( numAleat(0, preguntas.length-1), 1 );
+			pregunta = e[0][0];			// se guardan la pregunta y la respuesta 
+			respuesta = e[0][1];
+			document.getElementById('preg').innerHTML = pregunta;        // se muestra la pregunta
+			document.getElementById('dato').value = '';                  // se borra lo escrito anteriormente por el usuario
+			formuladas++;
+		}
+		function muestraResultado(){
+            var resultado;     
+			switch(acertadas){
+				case 0:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 1:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 2:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 3:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 4:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 5:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+			}
+		}
+		function numAleat(min, max){
+			return Math.floor( Math.random() * (max - min + 1) ) + min;
+		}
+	</script>
+</body>
+</html>

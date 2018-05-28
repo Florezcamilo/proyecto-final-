@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Proyecto</title>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+        <div class=page>
+        <table>
+            <tr>
+                <td><img src="../static/pokesmart.png" width="250"></td>
+                <td width="20">&nbsp;</td>
+                <td><h4>Bienvenido, {{ username }}<br></h4></td>
+            </tr>
+        </table>
+        <hr>
+        <br>
+        <br>
+	   <form action = "" method="post">
+        {% block body %}
+            Deseas Jugar?:<br>
+            <br>
+            <input name="boton" type="submit" value="jugar"> 
+            <br>
+            <br>
+            <br>
+            Necesitas Ayuda?:<br>
+            <br>
+            <input name="boton" type="submit" value="instrucciones"> 
+            <br>
+        {% endblock %}
+	   </form>
+</body>
+</html>

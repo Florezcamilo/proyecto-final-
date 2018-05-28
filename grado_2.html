@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Proyecto</title>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+	<h2 id="preg"></h2>
+	<input type="text" id="dato">
+	<button id="boton">Siguiente Pregunta</button>
+
+
+	<script>		
+		var preguntas = [																
+
+				['Cuantos planetas hay en nuestro sistema solar?','8'],
+				['¿Cuantos minutos tiene 20 horas?','480'],
+				['Antonimo de INASEQUIBLE','accesible'],
+				['La pista es al bailarín lo que...','el jardín al jardinero'],
+				['Identifica el numero que falta : 3,5,9,15,__,33','23'],
+				['¿Cómo se representan los sonidos?','fonema'],
+				['Extrae el valor de x: 2^(x + 1) - 4x = 0','1'],
+				['La ciencia que estudia la forma y la dimensiones de la Tierra y la representación de puntos de su superficie se llama:','geodesia'],
+				['¿En que continente esta Colombia?','américa'],
+				['2 en binario...','10'],
+				['9 en binario...','1001'],
+				['¿A que equivale el numero binario 1000 a decimal?','8'],
+				['¿A que equivale el numero binario 1001 a decimal?','9']
+			],
+			pregunta, respuesta,
+			formuladas = 0,
+			acertadas = 0;
+		hazPregunta();
+		document.getElementById('boton').addEventListener('click', function(){
+			var entrada = document.getElementById("dato").value;
+			if(entrada == respuesta){
+				acertadas++;
+				alert("Muy bien!");
+			}
+			if(entrada != respuesta){
+				alert("Incorrecta");
+			}
+			if(formuladas < 12){			
+				hazPregunta();			
+			}
+			else{						
+				muestraResultado();	
+			}
+		});
+		function hazPregunta(){
+			var e;			
+			e = preguntas.splice( numAleat(0, preguntas.length-1), 1 );
+			pregunta = e[0][0];			
+			respuesta = e[0][1];
+			document.getElementById('preg').innerHTML = pregunta;        
+			document.getElementById('dato').value = '';                  
+			formuladas++;
+		}
+		function muestraResultado(){
+            var resultado;     
+			switch(acertadas){
+				case 0:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 1:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 2:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 3:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 4:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 5:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 6:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 7:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 8:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 9:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 10:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 11:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 12:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+
+			}
+		}
+		function numAleat(min, max){
+			return Math.floor( Math.random() * (max - min + 1) ) + min;
+		}
+	</script>
+</body>
+</html>

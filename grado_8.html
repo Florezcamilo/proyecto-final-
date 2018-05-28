@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Proyecto</title>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+	<h2 id="preg"></h2>
+	<input type="text" id="dato">
+	<button id="boton">Siguiente Pregunta</button>
+
+
+	<script>		
+		var preguntas = [	
+				['¿Cuál es el edificio más alto del mundo?','burj khalifa'],
+				['5555 en binario...','1010110110011'],
+				['Derivada de 1/(3*x^2)','-(2/3*x^3)'],
+				['¿En qué país se encuentra la ciudad de Varsovia?','polonia'],
+				['¿A qué país pertenece la capital de Ottawa?','canadá'],
+				['¿Cómo se llamaba el primer mamífero en ser clonado?','dolly'],
+				['¿Cuando se conmemora el Día Internacional de la Mujer?','8 de marzo'],
+				['¿En que se desempaño David Hume?','filosofía'],
+				['¿Cuántas medallas tiene Teresa Perales?','26'],
+				['¿Cuántos dientes tiene una persona adulta?','32'],
+				['en la tabla periódica, Ca representa a:','calcio'],
+				['¿Cuántos kilómetros hay en una milla?','1.60'],
+				['Zeus es un dios que proviene de la mitología...','griega'],
+				['¿En que año fue la caída del Muro de Berlín?','1989'],
+				['¿Cómo se le llama a la palabra que se lee igual de atrás para adelante?','palíndromo'],
+				['¿En que nacen los ovíparos?','huevos'],
+				['¿Qué medida se usa para medir el sonido?','decibel'],
+				['¿Cuál es el continente más grande del mundo?','asia'],
+				['MCMLXXXVII...¿Qué número es?','1987']													
+
+			],
+			pregunta, respuesta,
+			formuladas = 0,
+			acertadas = 0;
+		hazPregunta();
+		document.getElementById('boton').addEventListener('click', function(){
+			var entrada = document.getElementById("dato").value;
+			if(entrada == respuesta){
+				acertadas++;
+				alert("Muy bien!");
+			}
+			if(entrada != respuesta){
+				alert("Incorrecta");
+			}
+			if(formuladas < 19){			
+				hazPregunta();			
+			}
+			else{						
+				muestraResultado();	
+			}
+		});
+		function hazPregunta(){
+			var e;			
+			e = preguntas.splice( numAleat(0, preguntas.length-1), 1 );
+			pregunta = e[0][0];			
+			respuesta = e[0][1];
+			document.getElementById('preg').innerHTML = pregunta;        
+			document.getElementById('dato').value = '';                  
+			formuladas++;
+		}
+		function muestraResultado(){
+            var resultado;     
+			switch(acertadas){
+				case 0:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 1:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 2:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 3:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 4:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 5:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 6:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 7:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 8:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 9:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 10:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 11:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 12:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 13:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 14:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break; 
+				case 15:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 16:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 17:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 18:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 19:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+
+			}
+		}
+		function numAleat(min, max){
+			return Math.floor( Math.random() * (max - min + 1) ) + min;
+		}
+	</script>
+</body>
+</html>

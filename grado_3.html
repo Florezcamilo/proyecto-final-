@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Proyecto</title>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+	<h2 id="preg"></h2>
+	<input type="text" id="dato">
+	<button id="boton">Siguiente Pregunta</button>
+
+
+	<script>		
+		var preguntas = [	
+				['¿Cuál es el nombre de la mascota de Mickey Mouse?','pluto'],
+				['¿Cómo se le llama a un grupo de lobos?','manada'],
+				['VERDADERO O FALSO. En la mitología Griega, Hades es el dios del Inframundo','verdadero'],
+				['¿Cuál es el río más largo del mundo?','amazonas'],
+				['¿El escorbuto es el resultado de una deficiencia de qué vitamina?','vitamina c'],
+				['¿La Estatua de la Libertad fue regalada a los Estados Unidos por qué país?','francia'],
+				['¿Qué ave era usada como mensajera?','paloma'],
+				['¿Quién escribió La Odisea?','homero'],
+				['¿En que año acabó la II Guerra Mundial?','1945'],
+				['¿Quién pintó “la última cena”?,(nombre y apellido)','leonardo da vinci'],
+				['¿Qué son los humanos: omnívoros, herbívoros o carnívoros?','omnivoros'],
+				['¿Qué año llegó Cristóbal Colón a América?','1492'],
+				['Derivada de x...','1'],
+				['Limite de x^2 cuando x se aproxima a 2...','4']															
+
+			],
+			pregunta, respuesta,
+			formuladas = 0,
+			acertadas = 0;
+		hazPregunta();
+		document.getElementById('boton').addEventListener('click', function(){
+			var entrada = document.getElementById("dato").value;
+			if(entrada == respuesta){
+				acertadas++;
+				alert("Muy bien!");
+			}
+			if(entrada != respuesta){
+				alert("Incorrecta");
+			}
+			if(formuladas < 14){			
+				hazPregunta();			
+			}
+			else{						
+				muestraResultado();	
+			}
+		});
+		function hazPregunta(){
+			var e;			
+			e = preguntas.splice( numAleat(0, preguntas.length-1), 1 );
+			pregunta = e[0][0];			
+			respuesta = e[0][1];
+			document.getElementById('preg').innerHTML = pregunta;        
+			document.getElementById('dato').value = '';                  
+			formuladas++;
+		}
+		function muestraResultado(){
+            var resultado;     
+			switch(acertadas){
+				case 0:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 1:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 2:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 3:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 4:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 5:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 6:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 7:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 8:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 9:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 10:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 11:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 12:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 13:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 14:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break; 
+
+
+			}
+		}
+		function numAleat(min, max){
+			return Math.floor( Math.random() * (max - min + 1) ) + min;
+		}
+	</script>
+</body>
+</html>

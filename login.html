@@ -1,0 +1,44 @@
+<!doctype html lang="es">
+<head>
+    <title>Proyecto</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class=page>
+        <table>
+            <tr>
+                <td><img src="../static/pokesmart.png" width="250"></td>
+                <td width="20">&nbsp;</td>
+                <td><h4><br>PokeSmart!, Introducción a la programación<br></h4></td>
+            </tr>
+        </table>
+        <hr>
+        <br>
+        <br>
+        {% block body %}
+            <form action="" method="post">
+                Ingresar<br>
+                <br>
+                Email:<br>
+                <input type="text" name="username">
+                <br>
+                Contraseña:<br>
+                <input type="password" name="pswd">
+                <br>
+                <br>    
+                <input type="submit" name="uno" value="ingresar">
+                <br>
+                <br>
+                <hr>
+                {% with messages = get_flashed_messages() %}
+                   {% if messages %}
+                      {% for message in messages %}
+                         <h5>{{ message }}</h5>
+                      {% endfor %}
+                   {% endif %}
+                {% endwith %}
+            </form> 
+        {% endblock %}
+    </div>
+</body>

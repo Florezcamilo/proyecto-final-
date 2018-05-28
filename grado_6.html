@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Proyecto</title>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+	<h2 id="preg"></h2>
+	<input type="text" id="dato">
+	<button id="boton">Siguiente Pregunta</button>
+
+
+	<script>		
+		var preguntas = [	
+				[' ¿Cuántos años tiene un lustro?','5'],
+				['¿Quién “sabía que no sabía nada”?','sócrates'],
+				['¿Qué deporte practica profesionalmente Roger Federer?','tenis'],
+				['¿En qué país se encuentra el estadio de Wembley?','inglaterra'],
+				['¿Cómo se llama el procedimiento de subir la bandera?','izar'],
+				['¿En qué año se aprobó la actual Constitución española?','1978'],
+				['Derivada de (2/(x+1))...','-(1/8)'],
+				['Derivada de senx...','cosx'],
+				['Derivada de e^x...','e^x'],
+				['¿2500 en binario?...','100111000100'],
+				['¿En qué año apareció en el mercado el primer videojuego protagonizado por Super Mario?','1985'],
+				['¿Cuál es el país con más camellos salvajes?','autralia'],
+				['¿Cuál es el país con mayor porcentaje de budistas?','camboya'],
+				['¿Cómo se llama la energía contenida en el núcleo de los átomos?','nuclear'],
+				['¿Cómo se llama el proceso por el cual las plantas obtienen alimento?','fotosíntesis'],
+				['¿Cuánto vale el número pi?','3.1416'],
+				['¿De qué está recubierto el cuerpo de los peces?','escamas']													
+			],
+			pregunta, respuesta,
+			formuladas = 0,
+			acertadas = 0;
+		hazPregunta();
+		document.getElementById('boton').addEventListener('click', function(){
+			var entrada = document.getElementById("dato").value;
+			if(entrada == respuesta){
+				acertadas++;
+				alert("Muy bien!");
+			}
+			if(entrada != respuesta){
+				alert("Incorrecta");
+			}
+			if(formuladas < 17){			
+				hazPregunta();			
+			}
+			else{						
+				muestraResultado();	
+			}
+		});
+		function hazPregunta(){
+			var e;			
+			e = preguntas.splice( numAleat(0, preguntas.length-1), 1 );
+			pregunta = e[0][0];			
+			respuesta = e[0][1];
+			document.getElementById('preg').innerHTML = pregunta;        
+			document.getElementById('dato').value = '';                  
+			formuladas++;
+		}
+		function muestraResultado(){
+            var resultado;     
+			switch(acertadas){
+				case 0:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 1:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 2:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 3:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 4:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 5:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 6:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 7:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 8:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 9:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 10:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 11:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 12:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 13:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 14:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break; 
+				case 15:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 16:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 17:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+
+
+			}
+		}
+		function numAleat(min, max){
+			return Math.floor( Math.random() * (max - min + 1) ) + min;
+		}
+	</script>
+</body>
+</html>

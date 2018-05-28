@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Proyecto</title>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+	<h2 id="preg"></h2>
+	<input type="text" id="dato">
+	<button id="boton">Siguiente Pregunta</button>
+
+
+	<script>		
+		var preguntas = [	
+				['Derivada de (x/2)^2','x/2'],
+				['Segunda derivada de (x/2)^2','1/2'],
+				['Un jugador de básquet convirtió 9 y erró 15 lanzamientos al aro. ¿Cuál fue el porcentaje de lanzamientos errados?','62,5%'],
+				['¿+ por + igual a?','+'],
+				['¿Quién era el general de los nazis en la Segunda Guerra Mundial?','adolf hitler'],
+				['¿Cómo se llama la estación espacial rusa?','mir'],
+				['¿Qué instrumento óptico permite ver los astros de cerca?','telescopio'],
+				['¿Cuál es el único mamífero capaz de volar?','murcielago'],
+				['¿Cuál es el libro sagrado del Islam?','corán'],
+				['¿Qué es más pequeño, un átomo o una molécula?','átomo'],
+				['¿Qué grasas hacen tan saludable el aceite de oliva?','insaturadas'],
+				['¿Cuál es la nacionalidad de Pablo Neruda?','chileno'],
+				['¿De qué estado fue emperador Napoleón Bonaparte?','francia'],
+				['El triángulo que tiene sus tres lados iguales ¿Cómo se llama?','equilátero'],
+				['¿De qué lengua proviene el español?','latin'],
+				['¿Cuál es el metal más caro del mundo?','rodio']													
+
+			],
+			pregunta, respuesta,
+			formuladas = 0,
+			acertadas = 0;
+		hazPregunta();
+		document.getElementById('boton').addEventListener('click', function(){
+			var entrada = document.getElementById("dato").value;
+			if(entrada == respuesta){
+				acertadas++;
+				alert("Muy bien!");
+			}
+			if(entrada != respuesta){
+				alert("Incorrecta");
+			}
+			if(formuladas < 16){			
+				hazPregunta();			
+			}
+			else{						
+				muestraResultado();	
+			}
+		});
+		function hazPregunta(){
+			var e;			
+			e = preguntas.splice( numAleat(0, preguntas.length-1), 1 );
+			pregunta = e[0][0];			
+			respuesta = e[0][1];
+			document.getElementById('preg').innerHTML = pregunta;        
+			document.getElementById('dato').value = '';                  
+			formuladas++;
+		}
+		function muestraResultado(){
+            var resultado;     
+			switch(acertadas){
+				case 0:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 1:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 2:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 3:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 4:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 5:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 6:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 7:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 8:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 9:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 10:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 11:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 12:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 13:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 14:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break; 
+				case 15:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 16:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+			}
+		}
+		function numAleat(min, max){
+			return Math.floor( Math.random() * (max - min + 1) ) + min;
+		}
+	</script>
+</body>
+</html>

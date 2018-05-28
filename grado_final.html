@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Proyecto</title>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+	<h2 id="preg"></h2>
+	<input type="text" id="dato">
+	<button id="boton">Siguiente Pregunta</button>
+
+
+	<script>		
+		var preguntas = [	
+				['¿Cuál fue la primera película de Walt Disney?','Blancanieves'],
+				['Intregral de ln x...','x*lnx-x+c'],
+				['Integral de 1/x...','lnx+c'],
+				['Derivada de x^2+2*x+300*x^3...','2*x+2+900*x^2'],
+				['¿Cuántos satélites tenemos orbitando alrededor de la tierra?','4256'],
+				['¿Cuántas veces parpadea una persona por semana?','25000'],
+				['¿Ciudad más poblada mundo?','tokio'],
+				['¿Cuál es quinto planeta en el sistema solar?','jupiter'],
+				['¿En qué país se usó la primera bomba atómica en combate?','japón'],
+				['¿A qué país pertenecen los cariocas?','brasil'],
+				['¿En qué país se encuentra el famoso monumento Taj Mahal?','india'],
+				['¿A qué grupo de islas pertenecen Haití y Puerto Rico?','antillas mayores'],
+				['¿Cuántos años duró la guerra de los 100 años?','116'],
+				['¿Cuál es el lugar más frío de la tierra?','antártida'],
+				['El número 20181 en binario...','100111011010101'],
+				['¿Cuál es una característica de un prisma pentagonal?','4 caras laterales'],
+				['¿Qué números reales son iguales a sus cubos?, (hacerlo de la manera 2,3,4,5 etc)','0,-1,1'],
+				['Carlos se cayó a un pozo de 30 metros de profundidad. Por las mañanas sube 3 metros, pero por la noche desciende 1,8 metros al dormir ¿Cuántos días tardará Carlos en subir a la tierra?','24'],
+				['Si tengo 5 vacas y voy a vender 2, y me regalan 3 ¿Cuántas vacas tengo?','8']								
+			],
+			pregunta, respuesta,
+			formuladas = 0,
+			acertadas = 0;
+		hazPregunta();
+		document.getElementById('boton').addEventListener('click', function(){
+			var entrada = document.getElementById("dato").value;
+			if(entrada == respuesta){
+				acertadas++;
+				alert("Muy bien!");
+			}
+			if(entrada != respuesta){
+				alert("Incorrecta");
+			}
+			if(formuladas < 20){			
+				hazPregunta();			
+			}
+			else{						
+				muestraResultado();	
+			}
+		});
+		function hazPregunta(){
+			var e;			
+			e = preguntas.splice( numAleat(0, preguntas.length-1), 1 );
+			pregunta = e[0][0];			
+			respuesta = e[0][1];
+			document.getElementById('preg').innerHTML = pregunta;        
+			document.getElementById('dato').value = '';                  
+			formuladas++;
+		}
+		function muestraResultado(){
+            var resultado;     
+			switch(acertadas){
+				case 0:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 1:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 2:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 3:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 4:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 5:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 6:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 7:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 8:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 9:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 10:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 11:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 12:
+					resultado = location.href ="http://127.0.0.1:5000/fracaso";
+					break;
+				case 13:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 14:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break; 
+				case 15:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 16:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 17:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 18:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 19:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+				case 20:
+					resultado = location.href ="http://127.0.0.1:5000/felicidades";
+					break;
+
+			}
+		}
+		function numAleat(min, max){
+			return Math.floor( Math.random() * (max - min + 1) ) + min;
+		}
+	</script>
+</body>
+</html>
